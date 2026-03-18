@@ -113,34 +113,40 @@ c.fuelType();
 
 ------------------------------------------------------------------------------------------------
 
-package in;
+*Package & Interface*
 
-interface Shape{
-	void area();
+// MyInterface.java
+package p1;
+
+public interface MyInterface {
+    void showMessage();
 }
 
-class Circle implements Shape{
-	
-	double radius;
-	
-	Circle(double r){
-		radius=r;
-	}
-	
-	public void area() {
-		double result=3.14*radius*radius;
-		System.out.println("Area of Circle:"+result);
-	}
+
+// MyClass.java
+package p1;
+
+public class MyClass implements MyInterface {
+
+    @Override
+    public void showMessage() {
+        System.out.println("Interface implemented");
+    }
 }
 
-public class main{
-	public static void main(String[] args) {
-		Circle c1=new Circle(5.0);
-		
-		c1.area();
-	}
-}
 
+// Main.java
+package p1;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        MyClass obj = new MyClass();
+        obj.showMessage();
+
+    }
+}
 -------------------------------------------------------------------------------------------------
 
 
