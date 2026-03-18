@@ -1,0 +1,248 @@
+class Student { 
+    private String name; 
+    private int age; 
+    public void setData(String n, int a) { 
+        name = n; 
+        age = a; 
+    } 
+    public void Display() { 
+        System.out.println("Name: " + name); 
+        System.out.println("Age: " + age); 
+    } 
+} 
+public class Main { 
+   public static void main(String[] args) { 
+       Student s1 = new Student(); 
+       s1.setData("Anu", 20); 
+       s1.Display(); 
+   } 
+} 
+-----------------------------------------------------------------------
+
+class Calculator { 
+int a; 
+int b; 
+// Default constructor 
+Calculator() { 
+this.a = 0; 
+this.b = 0; 
+System.out.println("Default constructor called: a=" + a + ", b=" + b); 
+} 
+// Parameterized constructor 
+Calculator(int a, int b) { 
+this.a = a; 
+this.b = b; 
+System.out.println("Parameterized constructor called: a=" + a + ", b=" + b); 
+} 
+// Overloaded add - two parameters 
+public int add(int a, int b) { 
+return a + b; 
+} 
+// Overloaded add - three parameters 
+public int add(int a, int b, int c) { 
+} 
+} 
+return a + b + c; 
+public class Main { 
+public static void main(String[] args) { 
+// Object using default constructor 
+Calculator c1 = new Calculator(); 
+System.out.println("Sum of 2 numbers: " + c1.add(10, 20)); 
+System.out.println("Sum of 3 numbers: " + c1.add(10, 20, 30)); 
+// Object using parameterized constructor 
+Calculator c2 = new Calculator(5, 10); 
+System.out.println("Sum of 2 numbers: " + c2.add(5, 10)); 
+System.out.println("Sum of 3 numbers: " + c2.add(5, 10, 15)); 
+} 
+} 
+
+---------------------------------------------------------------------------------------------
+
+public class StringAndStringBuffer { 
+public static void main(String[] args) { 
+String s1 = "Hello"; 
+String s2 = s1.concat("world"); 
+System.out.println("Original Value: " + s1); 
+System.out.println("After modification: " + s2); 
+System.out.println("Length: " + s2.length()); 
+System.out.println("Upper Case: " + s2.toUpperCase()); 
+System.out.println("Character at: " + s2.charAt(2)); 
+StringBuffer sb = new StringBuffer("Hello"); 
+System.out.println("String Buffer example: "); 
+System.out.println("Original StringBuffer: " + sb); 
+System.out.println("Append: " + sb.append("world")); 
+System.out.println("Insert: " + sb.insert(5, ", ")); 
+System.out.println("Replace: " + sb.replace(6, 12, "java")); 
+System.out.println("Delete: " + sb.delete(5, 6)); 
+System.out.println("Reverse: " + sb.reverse()); 
+} 
+} 
+
+--------------------------------------------------------------------------------------------------
+
+
+abstract class Vehicle { 
+String brand; 
+Vehicle(String brand) { 
+this.brand = brand; 
+} 
+abstract void start(); 
+final void fuelType() { 
+System.out.println("Fuel Type: Petrol"); 
+} 
+} 
+class Car extends Vehicle { 
+int speed; 
+Car(String brand, int speed) { 
+super(brand); 
+this.speed = speed; 
+} 
+@Override 
+void start() { 
+System.out.println("Car brand: " + brand + " started at speed: " + speed); 
+} 
+} 
+public class Main { 
+public static void main(String[] args) { 
+Car c = new Car("Toyota", 120); 
+c.start(); 
+c.fuelType(); 
+} 
+} 
+
+
+------------------------------------------------------------------------------------------------
+
+package in;
+
+interface Shape{
+	void area();
+}
+
+class Circle implements Shape{
+	
+	double radius;
+	
+	Circle(double r){
+		radius=r;
+	}
+	
+	public void area() {
+		double result=3.14*radius*radius;
+		System.out.println("Area of Circle:"+result);
+	}
+}
+
+public class main{
+	public static void main(String[] args) {
+		Circle c1=new Circle(5.0);
+		
+		c1.area();
+	}
+}
+
+-------------------------------------------------------------------------------------------------
+
+
+class FirstThread extends Thread {
+    public void run() {
+        try {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("First Thread : " + i);
+                Thread.sleep(500);   // pause for 500 milliseconds
+            }
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+class SecondThread extends Thread {
+    public void run() {
+        try {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("Second Thread : " + i);
+                Thread.sleep(500);   // pause for 500 milliseconds
+            }
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+public class multithreading {
+    public static void main(String[] args) {
+
+        FirstThread t1 = new FirstThread();
+        SecondThread t2 = new SecondThread();
+
+        t1.start();   // start first thread
+        t2.start();   // start second thread
+    }
+}
+
+
+----------------------------------------------------------------------------------------
+
+java bean
+-------------
+create  project javaBean
+in src : student, studentdemo : two classes
+
+
+import java.io.Serializable;
+
+public class Student implements Serializable {
+
+    // Private properties (Encapsulation)
+    private String name;
+    private int age;
+
+    // Public no-argument constructor
+    public Student() {
+    }
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter for age
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+
+Student.java file
+
+
+public class StudentDemo {
+
+    public static void main(String[] args) {
+
+        // Create JavaBean object
+        Student s = new Student();
+
+        // Set values
+        s.setName("Aaraa");
+        s.setAge(21);
+
+        // Get values
+        System.out.println("Name: " + s.getName());
+        System.out.println("Age: " + s.getAge());
+    }
+}
+
+
+Main.java
